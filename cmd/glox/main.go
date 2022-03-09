@@ -3,10 +3,12 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"github.com/smacfarlane/glox/internal/tokens"
 	"os"
 )
 
 func main() {
+	fmt.Printf("tokens.LEFT_PAREN")
 	args := os.Args[1:]
 
 	switch len(args) {

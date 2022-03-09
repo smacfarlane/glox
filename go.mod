@@ -1,3 +1,3 @@
-module github.com/smacfarlane/glox/glox
+module github.com/smacfarlane/glox
 
 go 1.17
