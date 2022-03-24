@@ -27,7 +27,6 @@ func (s *Scanner) ScanTokens() {
 	}
 
 	s.tokens = append(s.tokens, tokens.NewToken(tokens.EOF, "", "", s.line))
-
 }
 
 func (s *Scanner) isAtEnd() bool {
@@ -177,6 +176,9 @@ func (s *Scanner) handleNumber() {
 	s.addToken(tokens.NUMBER, number)
 }
 
+// TODO(briancain): We might need to peek into what kind of identifier
+// this is (such as AND, PRINT, WHILE, etc). otherwise they all get
+// stored the same.
 func (s *Scanner) handleIdentifer() {
 	for isAlphaNumeric(s.peek()) {
 		s.advance()
@@ -190,7 +192,12 @@ func (s *Scanner) handleIdentifer() {
 
 func isDigit(s string) bool {
 	// Ignore error. Cannot convert means it is not a digit
-	n, _ := strconv.Atoi(s)
+	n, err := strconv.Atoi(s)
+	if err != nil {
+		return false
+	}
+
+	// cover the case where we accidentally get "-10" or something similar
 	if n >= 0 && n <= 9 {
 		return true
 	}
