@@ -15,7 +15,7 @@ func TestScanner(t *testing.T) {
 	`*/
 	ezSrc := "print \"Hello, world!\";"
 	intSrc := "print 10;"
-	//negSrc := "print -10;"
+	negSrc := "print -10;"
 
 	t.Run("Scans a program and stores the tokens", func(t *testing.T) {
 		require := require.New(t)
@@ -40,5 +40,18 @@ func TestScanner(t *testing.T) {
 		// tokens.PRINT
 		tokenStr := scanner.tokens[0].String()
 		require.Equal(tokenStr, fmt.Sprintf("%d %s %s", tokens.IDENTIFIER, "print", ""))
+		tokenStr = scanner.tokens[1].String()
+		require.Equal(tokenStr, fmt.Sprintf("%d %s %s", tokens.NUMBER, "10", "10"))
+
+		scanner = NewScanner(negSrc)
+		require.Len(scanner.tokens, 0)
+
+		// Scanner does not handle negative numbers yet
+		/*
+			scanner.ScanTokens()
+			require.Len(scanner.tokens, 5)
+			tokenStr = scanner.tokens[1].String()
+			require.Equal(tokenStr, fmt.Sprintf("%d %s %s", tokens.NUMBER, "-10", "10"))
+		*/
 	})
 }
