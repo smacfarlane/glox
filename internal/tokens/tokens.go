@@ -15,7 +15,8 @@ type Token struct {
 
 const (
 	// Single-character tokens
-	LEFT_PAREN TokenType = iota
+	UNKNOWN TokenType = iota
+	LEFT_PAREN
 	RIGHT_PAREN
 	LEFT_BRACE
 	RIGHT_BRACE

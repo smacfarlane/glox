@@ -3,7 +3,8 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/smacfarlane/glox/internal/tokens"
+
+	//"github.com/smacfarlane/glox/internal/tokens"
 	"os"
 )
 
