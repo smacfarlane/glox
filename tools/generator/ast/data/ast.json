@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Binary",
+    "fields": [
+      {
+        "name": "Left",
+        "type": "Expr"
+      },
+      {
+        "name": "Operator",
+        "type": "tokens.Token"
+      },
+      {
+        "name": "Right",
+        "type": "Expr"
+      }
+    ]
+  },
+  {
+    "name": "Grouping",
+    "fields": [
+      {
+        "name": "Expression",
+        "type": "Expr"
+      }
+    ]
+  },
+  {
+    "name": "Literal",
+    "fields": [
+      {
+        "name": "Value",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "Unary",
+    "fields": [
+      {
+        "name": "Operator",
+        "type": "tokens.Token"
+      },
+      {
+        "name": "Right",
+        "type": "Expr"
+      }
+    ]
+  }
+]
