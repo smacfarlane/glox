@@ -9,7 +9,7 @@ type TokenType int
 type Token struct {
 	tokentype TokenType
 	lexeme    string
-	literal   string
+	literal   string // TODO: This should be Any
 	line      int
 }
 
@@ -75,4 +75,8 @@ func NewToken(t TokenType, lexeme, literal string, line int) Token {
 
 func (t *Token) String() string {
 	return fmt.Sprintf("%d %s %s", t.tokentype, t.lexeme, t.literal)
+}
+
+func (t *Token) GetLexeme() string {
+	return t.lexeme
 }
