@@ -5,11 +5,12 @@ import (
 )
 
 type TokenType int
+type Literal interface{}
 
 type Token struct {
 	tokentype TokenType
 	lexeme    string
-	literal   string // TODO: This should be Any
+	literal   Literal
 	line      int
 }
 
@@ -64,7 +65,7 @@ const (
 	EOF
 )
 
-func NewToken(t TokenType, lexeme, literal string, line int) Token {
+func NewToken(t TokenType, lexeme string, literal Literal, line int) Token {
 	return Token{
 		tokentype: t,
 		lexeme:    lexeme,
